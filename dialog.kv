@@ -1,0 +1,32 @@
+# Author = 'MazeFX'
+
+# TODO - Clean up file
+
+#:kivy 1.8.0
+
+# Helper for keeping a consistency accross the whole SpreadIT UI
+#
+# Rules:
+# - rows height are 48sp
+# - padding is 4sp
+# - spacing is 4sp
+# - button / label / widget are 40sp height
+
+<ConfirmationDialog>:
+    orientation: 'vertical'
+    padding: '5sp'
+    Label:
+        text: root.message
+        halign: 'center'
+    BoxLayout:
+        size_hint_y: None
+        height: '25pt'
+        Button:
+            text: 'Save'
+            on_release: root.dispatch('on_save')
+        Button:
+            text: 'No'
+            on_release: root.dispatch('on_ok')
+        Button:
+            text: 'Cancel'
+            on_release: root.dispatch('on_cancel')

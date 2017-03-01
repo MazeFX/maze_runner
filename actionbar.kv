@@ -1,0 +1,47 @@
+# Author = 'MazeFX'
+
+# TODO - Clean up file
+
+#:kivy 1.8.0
+
+<AppActionBar>
+    AppActionView:
+        ActionPrevious:
+            with_previous: True
+            previous_image: 'data/icons/menu_icon.png'
+            app_icon: 'data/icons/stinis_logo_icon.png'
+            app_icon_height: '44dp'
+            app_icon_width: '44dp'
+            title: 'Spread-IT'
+            size_hint_x: None
+            width: '300dp'
+            on_release: app.root.toggle_drawer()
+
+        ActionFiller:
+
+        ActionButton:
+            text: 'Generate Maze'
+            padding: ('8dp', '8dp')
+            icon: 'data/icons/menu_icon.png'
+            on_release: root.generate_maze()
+            important: True
+
+        ActionInput:
+            id: search_field
+            disabled: True
+            size_hint_x: None
+            width: 0
+        ActionButton:
+            text: 'Search'
+            padding: ('8dp', '8dp')
+            icon: 'data/icons/search_icon.png'
+            on_release: root.toggle_search_mode()
+            important: True
+
+
+<ActionInput@TextInput+ActionItem>
+    padding: '8dp'
+    font_size: self.height - dp(24)
+
+
+<ActionFiller@Label+ActionItem>

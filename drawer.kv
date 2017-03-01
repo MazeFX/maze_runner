@@ -1,0 +1,126 @@
+# Author = 'MazeFX'
+
+# TODO - Clean up file
+
+#:kivy 1.8.0
+
+# Helper for keeping a consistency accross the whole SpreadIT UI
+#
+# Rules:
+# - rows height are 48sp
+# - padding is 4sp
+# - spacing is 4sp
+# - button / label / widget are 40sp height
+
+<AppDrawer>:
+    drawer_header: drawer_header
+    cols: 1
+    size_hint: None, None
+    padding: '4dp'
+    spacing: '4dp'
+    canvas.before:
+        Color:
+            rgb: .5, .5, .5
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    DrawerHeader:
+        id: drawer_header
+        size_hint_y: None
+        height: '212dp'
+
+
+    BoxLayout:
+        id: main_menu
+        orientation: 'vertical'
+
+
+        GridLayout:
+            id: _main_menu_buttons
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            padding: '10dp'
+            canvas.before:
+                Color:
+                    rgb: .1, .1, .1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+        Label:
+            size_hint_y: .5
+
+
+
+<DrawerHeader>:
+    header_image: header_image
+
+    header_profile: header_profile
+    header_name: header_name
+    header_email: header_email
+    canvas.before:
+        Color:
+            rgb: .1, .1, .1
+        Rectangle:
+            size: self.size
+            pos: 0, 0
+
+    AnchorLayout:
+        anchor_y: 'top'
+        anchor_x: 'right'
+        padding: '10dp'
+        HeaderButton:
+            icon: 'data/icons/settings_icon.png'
+            on_release:
+                app.root.toggle_drawer()
+                app.root.action_btn_settings_pressed()
+
+    AnchorLayout:
+        anchor_y: 'bottom'
+        anchor_x: 'left'
+        padding: '10dp'
+        BoxLayout:
+            orientation: 'vertical'
+            Image:
+                id: header_image
+                size_hint_y: .5
+                size_hint_x: .5
+
+            Label:
+                id: header_profile
+                size_hint: None, None
+                width: header_image.width
+                height: '40dp'
+
+            BoxLayout:
+                size_hint: None, None
+                width: header_name.width + dp(60)
+                height: '24dp'
+
+                Label:
+                    text: 'Label'
+                    size_hint_x: None
+                    width: '72dp'
+
+                Label:
+                    id: header_name
+                    size_hint_x: None
+                    width: self.texture_size[0]
+
+            BoxLayout:
+                size_hint: None, None
+                width: header_email.width + dp(60)
+                height: '24dp'
+
+                Label:
+                    text: 'Label'
+                    size_hint_x: None
+                    width: '72dp'
+
+                Label:
+                    id: header_email
+                    size_hint_x: None
+                    width: self.texture_size[0]
+
+

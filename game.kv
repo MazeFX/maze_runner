@@ -1,0 +1,91 @@
+# Author = 'MazeFX'
+
+# TODO - Clean up file
+
+#:kivy 1.8.0
+#:import game game
+
+
+GameScreen:
+    name: 'Game'
+    view: view
+    ScrollView:
+        AnchorLayout:
+            id: view
+            size_hint: None, None
+            anchor_x: 'center'
+            anchor_y: 'center'
+
+            canvas.before:
+                Color:
+                    rgb: .6, .6, .6
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+
+<maze>:
+    size_hint: None, None
+    height: self.minimum_height
+    width: self.minimum_width
+    pos_hint: {'center_x': .5, 'center_y': .5}
+
+<Tile>:
+    u_wall: u_wall
+    d_wall: d_wall
+    l_wall: l_wall
+    r_wall: r_wall
+    text: 'Tile'
+    size_hint: None,None
+    height: '84dp'
+    width: '84dp'
+
+    canvas.before:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            source: self.tile_bg
+            size: self.size
+
+        Color:
+            rgba: 1, 0, 0, (1 if self.flag_routed else 0)
+        Ellipse:
+            size: dp(12), dp(12)
+            pos: ((root.width / 2) - dp(6), (root.height / 2) - dp(6))
+
+    #Label:
+    #    color: 0, 0, 0, 1
+    #    text: str(root.grid_xy)
+
+
+
+    MyImage:
+        id: u_wall
+        height: '12dp'
+        width: '84dp'
+        pos_hint: {'top': 1}
+
+    MyImage:
+        id: d_wall
+        height: '12dp'
+        width: '84dp'
+        pos_hint: {'bottom': 1}
+
+    MyImage:
+        id: l_wall
+        height: '84dp'
+        width: '12dp'
+        pos_hint: {'left': 1}
+
+    MyImage:
+        id: r_wall
+        height: '84dp'
+        width: '12dp'
+        pos_hint: {'right': 1}
+
+<MyImage>:
+    size_hint: None,None
+    color: 1, 1, 1, (1 if self.blocked else 0)
+
+
+

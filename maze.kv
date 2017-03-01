@@ -1,0 +1,46 @@
+# Author = 'MazeFX'
+
+# TODO - Clean up file
+
+#:kivy 1.8.0
+#:import _actionbar actionbar
+#:import _app_content app_content
+#:import _drawer drawer
+#:import _statusbar statusbar
+
+# Helper for keeping a consistency accross the whole SpreadIT UI
+#
+# Rules:
+# - rows height are 48sp
+# - padding is 4sp
+# - spacing is 4sp
+# - button / label / widget are 40sp height
+
+<Shell>:
+    actionbar: actionbar
+    app_content: app_content
+    app_drawer: app_drawer
+    statusbar: statusbar
+
+    AppActionBar:
+        id: actionbar
+        pos_hint: {'top': 1}
+        on_height: root.on_actionbar_height()
+
+    AppContent:
+        id: app_content
+        size_hint_y: None
+        height: root.height - actionbar.height - statusbar.height
+
+    AppDrawer:
+        id: app_drawer
+        width: root.width * .2
+        pos: 0 - self.width, 0
+        height: root.height - actionbar.height
+
+    StatusBar:
+        id: statusbar
+        size_hint_y: None
+        on_height: root.on_statusbar_height()
+        height: '20pt'
+        pos_hint: {'y': 0}

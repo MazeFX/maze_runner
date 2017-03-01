@@ -1,0 +1,29 @@
+# Author = 'MazeFX'
+
+# TODO - Clean up file
+
+#:kivy 1.8.0
+
+# Helper for keeping a consistency accross the whole SpreadIT UI
+#
+# Rules:
+# - rows height are 48sp
+# - padding is 4sp
+# - spacing is 4sp
+# - button / label / widget are 40sp height
+
+<HeaderButton>:
+    size_hint: None, None
+    height: '48dp'
+    width: '48dp'
+
+
+<MenuButton>:
+    size_hint_y: None
+    height: '48dp'
+
+    on_release:
+        if app.root.spread_it_content.current != self.screen_name:\
+        idx = app.root.screen_names.index(self.screen_name);\
+        app.root.go_screen(idx)
+        app.root.toggle_drawer()

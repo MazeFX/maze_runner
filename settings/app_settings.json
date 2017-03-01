@@ -1,0 +1,17 @@
+[
+    {
+        "type": "string",
+        "title": "Language",
+        "desc": "Select the systems language",
+        "section": "global",
+        "key": "language"
+    }
+    ,
+    {
+        "type": "string",
+        "title": "Color Theme",
+        "desc": "Select the systems color theme",
+        "section": "global",
+        "key": "theme"
+    }
+]
